@@ -77,7 +77,7 @@ function Home() {
         <ul>
           {leaderboard.map((entry, index) => (
             <li key={index}>
-              {index + 1}. {entry.name} - {entry.score} Punkte ({entry.time}s)
+              {index + 1}. {entry.name} - {entry.score} Points ({entry.time}s)
             </li>
           ))}
         </ul>
@@ -97,7 +97,7 @@ function Quiz() {
   };
 
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(1);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [feedback, setFeedback] = useState("");
   const [time, setTime] = useState(0);
@@ -121,12 +121,15 @@ function Quiz() {
   const handleAnswer = (answer) => {
     const correctAnswers = Array.isArray(questions[questionIndex].correct)
       ? questions[questionIndex].correct
-      : [questions[questionIndex].correct]; // Ensure it's always an array
+      : [questions[questionIndex].correct]; // Wenn es mehrere richtige Antworten gibt, wird dies zu einem Array
 
     const isCorrect = correctAnswers.includes(answer);
 
     setFeedback(isCorrect ? "Correct! 🎉" : "False! ❌");
-    if (isCorrect) setScore((prevScore) => prevScore + 1);
+    if (isCorrect) {
+      // Vollständige Punktevergabe, wenn eine der richtigen Antworten gewählt wird
+      setScore((prevScore) => prevScore + 1);
+    }
 
     setTimeout(() => {
       if (questionIndex + 1 < questions.length) {
@@ -134,6 +137,7 @@ function Quiz() {
         setSelectedAnswer(null);
         setFeedback("");
       } else {
+        // Nach der letzten Frage zum Ergebnis-Bildschirm navigieren
         navigate("/results", { state: { score, time, name: playerName } });
       }
     }, 2000);
@@ -144,6 +148,7 @@ function Quiz() {
       <>
         <h3>Why would you do a quiz about that?</h3>
         <img src="/sus.jpg" alt="" />
+        <Link to="/">New Quiz</Link>
       </>
     );
   }
@@ -190,7 +195,7 @@ function Results() {
       <h2>Results</h2>
       <p>Name: {name}</p>
       <p>
-        Points: {score}/{quizData.Crewgröße.length}
+        Points: {score}/{quizData.Açucena.length}
       </p>
       <p>Time: {time} seconds</p>
       <Link to="/">New Quiz</Link>
