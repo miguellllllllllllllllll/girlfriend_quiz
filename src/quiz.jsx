@@ -198,6 +198,7 @@ function Results() {
         Points: {score}/{quizData.Açucena.length}
       </p>
       <p>Time: {time} seconds</p>
+      <h3>The Secret code you are looking for: 21012024</h3>
       <Link to="/">New Quiz</Link>
     </div>
   );

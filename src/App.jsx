@@ -1,9 +1,10 @@
 import QuizApp from "./quiz";
+import Pinpad from "./Pinpad";
 
 function App() {
   return (
     <>
-      <QuizApp />
+      <Pinpad />
     </>
   );
 }
