@@ -26,27 +26,13 @@ const quizData = {
       options: ["Francesinha", "Chilli con carne", "Miguel", "Sushi"],
       correct: ["Chilli con carne", "Miguel"],
     },
-  ],
-  Crewgröße: [
     {
-      text: "Wie viele Crewmitglieder hat die Aurora?",
-      options: [2, "aaa", 6],
-      correct: "aaaa",
-    },
-    {
-      text: "Wie viele Crewmitglieder hat die Constellation?",
-      options: [1, 4, 5],
-      correct: 4,
+      text: "What does Açucena NOT like?",
+      options: ["Hannibal", "Thriftshops", "Miguel", "Beach"],
+      correct: ["Chilli con carne", "Miguel"],
     },
   ],
-  Länge: [
-    { text: "Wie lang ist die Aurora?", options: [22, 30, 40], correct: 22 },
-    {
-      text: "Wie lang ist die Constellation?",
-      options: [75, 90, 100],
-      correct: 75,
-    },
-  ],
+  BigBlackBootymen: [],
 };
 
 function Home() {
@@ -138,13 +124,18 @@ function Quiz() {
   }, [startTime]);
 
   const handleAnswer = (answer) => {
-    const isCorrect = answer === questions[questionIndex].correct;
+    const correctAnswers = Array.isArray(questions[questionIndex].correct)
+      ? questions[questionIndex].correct
+      : [questions[questionIndex].correct]; // Ensure it's always an array
+
+    const isCorrect = correctAnswers.includes(answer);
+
     setFeedback(isCorrect ? "Correct! 🎉" : "False! ❌");
-    if (isCorrect) setScore(score + 1);
+    if (isCorrect) setScore((prevScore) => prevScore + 1);
 
     setTimeout(() => {
       if (questionIndex + 1 < questions.length) {
-        setQuestionIndex(questionIndex + 1);
+        setQuestionIndex((prevIndex) => prevIndex + 1);
         setSelectedAnswer(null);
         setFeedback("");
       } else {
@@ -154,7 +145,12 @@ function Quiz() {
   };
 
   if (questions.length === 0)
-    return <h3>No Quiz avaiable for this Category</h3>;
+    return (
+      <>
+        <h3>Why would you do a quiz about that?</h3>
+        <img src="/sus.jpg" alt="" />
+      </>
+    );
 
   return (
     <div>
