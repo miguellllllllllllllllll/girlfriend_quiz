@@ -26,13 +26,8 @@ const quizData = {
       options: ["Francesinha", "Chilli con carne", "Miguel", "Sushi"],
       correct: ["Chilli con carne", "Miguel"],
     },
-    {
-      text: "What does Açucena NOT like?",
-      options: ["Hannibal", "Thriftshops", "Miguel", "Beach"],
-      correct: ["Chilli con carne", "Miguel"],
-    },
   ],
-  BigBlackBootymen: [],
+  BigBlackMenBootyShaking: [],
 };
 
 function Home() {
@@ -144,13 +139,14 @@ function Quiz() {
     }, 2000);
   };
 
-  if (questions.length === 0)
+  if (questions.length === 0) {
     return (
       <>
         <h3>Why would you do a quiz about that?</h3>
         <img src="/sus.jpg" alt="" />
       </>
     );
+  }
 
   return (
     <div>
