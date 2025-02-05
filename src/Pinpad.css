@@ -1,4 +1,4 @@
-body {
+.bg {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,21 +12,25 @@ body {
 }
 
 main {
+  margin-right: 200px;
+  margin-left: 80px;
   display: flex;
   flex-direction: column;
+  max-width: 300px;
+  width: 50%;
 
   padding: 32px 16px;
 
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  border-radius: 4px;
+  border-radius: 40px;
 
   background-size: cover;
-  background-image: url("https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45");
+  background-image: linear-gradient(to right, #35393c, #606163);
 }
 
-button {
-  height: 70px;
-  width: 70px;
+button.quizbutton {
+  height: 80px;
+  width: 80px;
 
   color: #1d1106;
   background-color: #f5ac5f;
@@ -38,8 +42,8 @@ button {
   border-bottom-color: #7e5329;
 
   border-radius: 0px;
-  margin-left: 6px;
-  margin-right: 6px;
+  margin-left: 2px;
+  margin-right: 2px;
 
   cursor: pointer;
   box-sizing: border-box;
@@ -47,13 +51,13 @@ button {
   font-weight: bold;
 }
 
-button:hover {
+button.quizbutton:hover {
   color: white;
 }
 
-button:active {
-  background-color: #9b69b6;
+button.quizbutton:active {
   color: white;
+  transform: scale(0.9);
 }
 
 #input-container {
@@ -90,8 +94,8 @@ input.error {
   justify-content: center;
   align-items: center;
 
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 section {

@@ -147,7 +147,7 @@ function Quiz() {
     return (
       <>
         <h3>Why would you do a quiz about that?</h3>
-        <img src="/sus.jpg" alt="" />
+        <img src="/assets/sus.jpg" alt="" />
         <Link to="/">New Quiz</Link>
       </>
     );
