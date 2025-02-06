@@ -1,8 +1,11 @@
 import React from "react";
 import Input from "./components/Input";
 import Button from "./components/Button";
-import PaperTape from "./components/note";
+import PostIt from "./components/PostIt";
+import Banner from "./components/Banner";
 import "./Pinpad.css";
+import Logo from "./assets/tf2title.png";
+import icon from "./assets/tf2icon.svg";
 
 const PASSCODE = "1022";
 
@@ -26,6 +29,13 @@ export default function Pinpad() {
 
   return (
     <>
+      <Banner
+        images={[Logo, icon]} // Multiple images
+        size="100px"
+        fit="contain"
+        color="#f0f0f0"
+        spacing="0px"
+      />
       <div className="bg">
         <main>
           <section className="numbers">
@@ -56,10 +66,7 @@ export default function Pinpad() {
             </section>
           </section>
         </main>
-        <PaperTape
-          text="To get the 4 digit code, you have to play the Quiz first!!!"
-          color="blue"
-        />
+        <PostIt text="You can add your custom text here!" />
       </div>
     </>
   );

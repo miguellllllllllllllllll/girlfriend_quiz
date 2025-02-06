@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Compacta";
+  src: url("./compacta.ttf") format("ttf"), url("./compacta.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*@font-face {
+  font-family: "AnotherFont";
+  src: url("./AnotherFont.woff2") format("woff2"),
+    url("./AnotherFont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}*/
+
+.title {
+  text-align: center;
+}
