@@ -66,7 +66,7 @@ export default function Pinpad() {
             </section>
           </section>
         </main>
-        <PostIt text="You can add your custom text here!" />
+        <PostIt text="To get the 4 digit code you have to play the quiz first!!!" />
       </div>
     </>
   );
