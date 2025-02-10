@@ -65,7 +65,7 @@ button.quizbutton:active {
   justify-content: center;
 }
 
-input {
+input.input {
   margin-bottom: 32px;
   padding: 16px;
 

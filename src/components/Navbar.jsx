@@ -1,46 +1,25 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 
-const Navbar = () => {
+export default function Navbar() {
   return (
-    <div className="bannercolor">
-      <div class="nav-container">
-        <div class="nav-buttons">
-          <div class="nav-button">
-            <button class="nv-logo" onclick="location.href='#'" type="button">
-              <p>Açucena</p>
-            </button>
-          </div>
-          <div class="nav-button">
-            <button class="nv-btn" onclick="location.href='#'" type="button">
-              <p>Home</p>
-            </button>
-          </div>
-          <div class="nav-button">
-            <button
-              class="nv-btn"
-              onclick="location.href='#'"
-              type="button"
-            ></button>
-          </div>
-          <div class="nav-button">
-            <button
-              class="nv-btn"
-              onclick="location.href='#'"
-              type="button"
-            ></button>
-          </div>
-          <div class="nav-button">
-            <button
-              class="nv-btn"
-              onclick="location.href='#'"
-              type="button"
-            ></button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography
+          variant="h6"
+          sx={{ flexGrow: 1, display: "flex", alignItems: "center" }}
+        >
+          Açucena
+          <Box
+            component="img"
+            src="/src/assets/tiktokemoji.png"
+            sx={{ height: 30, width: 30, ml: 1 }} // Höhe und Breite auf 20px setzen
+            alt="Emoji"
+          />
+        </Typography>
+        <Button color="inherit">About</Button>
+        <Button color="inherit">Puzzles</Button>
+        <Button color="inherit">Hunt</Button>
+      </Toolbar>
+    </AppBar>
   );
-};
-
-export default Navbar;
+}

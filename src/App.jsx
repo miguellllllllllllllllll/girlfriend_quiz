@@ -1,6 +1,7 @@
-import QuizApp from "./quiz";
-import Pinpad from "./Pinpad";
-import Homepage from "./Homepage";
+import QuizApp from "./pages/quiz";
+import Pinpad from "./pages/Pinpad";
+import Homepage from "./pages/Homepage";
+import "/src/App.css";
 
 function App() {
   return (
