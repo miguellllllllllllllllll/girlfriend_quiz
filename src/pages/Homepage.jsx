@@ -20,6 +20,7 @@ function Homepage() {
       <CssBaseline /> {/* Stellt sicher, dass MUI Styles übernommen werden */}
       <Navbar />
       <AboutMe />
+      <Photocollage />
     </ThemeProvider>
   );
 }
