@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import "/src/Navbar.css";
 import AboutMe from "../components/Aboutme";
 import Photocollage from "../components/Photocollage";
+import Portal from "../components/Portal";
+import QuizApp from "./quiz";
 
 // 🎨 MUI Theme mit Primary Color definieren
 const theme = createTheme({
@@ -16,12 +18,16 @@ const theme = createTheme({
 
 function Homepage() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline /> {/* Stellt sicher, dass MUI Styles übernommen werden */}
-      <Navbar />
-      <AboutMe />
-      <Photocollage />
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <CssBaseline /> {/* Stellt sicher, dass MUI Styles übernommen werden */}
+        <Navbar />
+        <Portal />
+        <AboutMe />
+        <QuizApp />
+        <Photocollage />
+      </ThemeProvider>
+    </>
   );
 }
 

@@ -7,6 +7,17 @@ import {
   useNavigate,
   useLocation,
 } from "react-router-dom";
+import {
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  Typography,
+  Box,
+  Card,
+  CardContent,
+  Container,
+} from "@mui/material";
 
 // Statische Quiz-Daten
 const quizData = {
@@ -46,45 +57,68 @@ function Home() {
 
   const startQuiz = () => {
     if (name.trim() && category) {
-      navigate("/quiz", { state: { name, category } });
+      navigate("/quiz/quiz", { state: { name, category } });
     } else {
       alert("PLease choose a category and enter your name");
     }
   };
 
   return (
-    <div>
-      <h1>Welcome to the Açucena Quiz!</h1>
-      <h2>A Quiz all about Açucena and Amelie :3</h2>
-      <input
-        type="text"
-        placeholder="Enter your name"
+    <Container maxWidth="sm" sx={{ textAlign: "center", mt: 5 }}>
+      <Typography variant="h4" gutterBottom>
+        Welcome to the Açucena Quiz!
+      </Typography>
+      <Typography variant="subtitle1">
+        A Quiz all about Açucena and Amelie :3
+      </Typography>
+      <TextField
+        label="Enter your name"
+        fullWidth
+        variant="outlined"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        sx={{ mt: 2 }}
       />
-      <select onChange={(e) => setCategory(e.target.value)} value={category}>
-        <option value="">Choose a category</option>
+      <Select
+        fullWidth
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        displayEmpty
+        sx={{ mt: 2 }}
+      >
+        <MenuItem value="">Choose a category</MenuItem>
         {categories.map((cat, index) => (
-          <option key={index} value={cat}>
+          <MenuItem key={index} value={cat}>
             {cat}
-          </option>
+          </MenuItem>
         ))}
-      </select>
-      <button onClick={startQuiz}>Start</button>
-
-      <h2>🏆 Top 3 Players 🏆</h2>
+      </Select>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={startQuiz}
+        sx={{ mt: 3 }}
+      >
+        Start
+      </Button>
+      <Button component={Link} to="/homepage" sx={{ mt: 2 }}>
+        Back to Homepage
+      </Button>
+      <Typography variant="h5" sx={{ mt: 4 }}>
+        🏆 Top 3 Players 🏆
+      </Typography>
       {leaderboard.length > 0 ? (
-        <ul>
+        <Box>
           {leaderboard.map((entry, index) => (
-            <li key={index}>
+            <Typography key={index}>
               {index + 1}. {entry.name} - {entry.score} Points ({entry.time}s)
-            </li>
+            </Typography>
           ))}
-        </ul>
+        </Box>
       ) : (
-        <p>No entrys yet.</p>
+        <Typography>No entries yet.</Typography>
       )}
-    </div>
+    </Container>
   );
 }
 
@@ -98,10 +132,10 @@ function Quiz() {
 
   const [questionIndex, setQuestionIndex] = useState(0);
   const [score, setScore] = useState(1);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [feedback, setFeedback] = useState("");
   const [time, setTime] = useState(0);
   const [startTime, setStartTime] = useState(null);
+  const [answerSelected, setAnswerSelected] = useState(false); // NEU
 
   const questions = quizData[category] || [];
 
@@ -119,26 +153,28 @@ function Quiz() {
   }, [startTime]);
 
   const handleAnswer = (answer) => {
+    if (answerSelected) return; // Verhindere mehrfaches Klicken
+
+    setAnswerSelected(true); // Verhindert weitere Klicks nach der ersten Antwort
+
     const correctAnswers = Array.isArray(questions[questionIndex].correct)
       ? questions[questionIndex].correct
-      : [questions[questionIndex].correct]; // Wenn es mehrere richtige Antworten gibt, wird dies zu einem Array
+      : [questions[questionIndex].correct];
 
     const isCorrect = correctAnswers.includes(answer);
 
     setFeedback(isCorrect ? "Correct! 🎉" : "False! ❌");
     if (isCorrect) {
-      // Vollständige Punktevergabe, wenn eine der richtigen Antworten gewählt wird
       setScore((prevScore) => prevScore + 1);
     }
 
     setTimeout(() => {
       if (questionIndex + 1 < questions.length) {
         setQuestionIndex((prevIndex) => prevIndex + 1);
-        setSelectedAnswer(null);
         setFeedback("");
+        setAnswerSelected(false); // Aktiviert Buttons für die nächste Frage
       } else {
-        // Nach der letzten Frage zum Ergebnis-Bildschirm navigieren
-        navigate("/results", { state: { score, time, name: playerName } });
+        navigate("/quiz/results", { state: { score, time, name: playerName } });
       }
     }, 2000);
   };
@@ -146,26 +182,45 @@ function Quiz() {
   if (questions.length === 0) {
     return (
       <>
-        <h3>Why would you do a quiz about that?</h3>
-        <img src="/assets/sus.jpg" alt="" />
-        <Link to="/">New Quiz</Link>
+        <Typography variant="h5" color="initial">
+          Why would you do a quiz about that?
+        </Typography>
+        <img src="/src/assets/sus.jpg" alt="" />
+        <Button component={Link} to="/quiz/start" sx={{ mt: 2 }}>
+          New Quiz
+        </Button>
       </>
     );
   }
 
   return (
-    <div>
-      <h2>{questions[questionIndex].text}</h2>
-      <div>
-        {questions[questionIndex].options.map((option, index) => (
-          <button key={index} onClick={() => handleAnswer(option)}>
-            {option}
-          </button>
-        ))}
-      </div>
-      {feedback && <p>{feedback}</p>}
-      <p>Time: {time} seconds</p>
-    </div>
+    <Container sx={{ textAlign: "center", mt: 5 }}>
+      <Card>
+        <CardContent>
+          <Typography variant="h5">{questions[questionIndex].text}</Typography>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 2 }}>
+            {questions[questionIndex].options.map((option, index) => (
+              <Button
+                key={index}
+                variant="contained"
+                onClick={() => handleAnswer(option)}
+              >
+                {option}
+              </Button>
+            ))}
+          </Box>
+          {feedback && (
+            <Typography
+              variant="h6"
+              color={feedback.includes("Correct") ? "green" : "red"}
+              sx={{ mt: 2 }}
+            >
+              {feedback}
+            </Typography>
+          )}
+        </CardContent>
+      </Card>
+    </Container>
   );
 }
 
@@ -191,28 +246,31 @@ function Results() {
   }, [name, score, time]);
 
   return (
-    <div>
-      <h2>Results</h2>
-      <p>Name: {name}</p>
-      <p>
-        Points: {score}/{quizData.Açucena.length}
-      </p>
-      <p>Time: {time} seconds</p>
-      <h3>The Secret code you are looking for: 21012024</h3>
-      <Link to="/">New Quiz</Link>
-    </div>
+    <Container sx={{ textAlign: "center", mt: 5 }}>
+      <Typography variant="h4">Results</Typography>
+      <Typography variant="h6">Name: {name}</Typography>
+      <Typography variant="h6">
+        Score: {score} / {quizData.Açucena.length}
+      </Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        sx={{ mt: 2 }}
+        onClick={() => navigate("/quiz/start")}
+      >
+        New Quiz
+      </Button>
+    </Container>
   );
 }
 
 function QuizApp() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/results" element={<Results />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/start" element={<Home />} />
+      <Route path="/quiz" element={<Quiz />} />
+      <Route path="/results" element={<Results />} />
+    </Routes>
   );
 }
 
