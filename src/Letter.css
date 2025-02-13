@@ -1,0 +1,68 @@
+Overall {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
+.envelope {
+  position: relative;
+  cursor: pointer;
+}
+
+.back {
+  position: relative;
+  height: 200px;
+  width: 300px;
+  background-color: #ccc;
+}
+
+.front {
+  position: relative;
+  height: 200px;
+  width: 300px;
+  border: 130px solid transparent;
+  border-top: 100px solid #fff;
+}
+
+.envelope:hover .front {
+  transform: rotateX(160deg);
+  transition: transform 0.4s;
+}
+
+.letter {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  transition: top 0.2s;
+}
+
+.envelope:hover .letter {
+  top: 0;
+}
+
+.heart {
+  background-color: red;
+  height: 70px;
+  width: 70px;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  transform: rotate(-45deg);
+}
+
+@keyframes textEffect {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.text {
+  animation: textEffect 5s infinite;
+}

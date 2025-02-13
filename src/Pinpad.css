@@ -14,7 +14,6 @@
 }
 
 main {
-  margin-left: 650px;
   display: flex;
   flex-direction: column;
   max-width: 300px;
@@ -65,7 +64,7 @@ button.quizbutton:active {
   justify-content: center;
 }
 
-input.input {
+input {
   margin-bottom: 32px;
   padding: 16px;
 

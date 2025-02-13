@@ -37,6 +37,16 @@ const quizData = {
       options: ["Francesinha", "Chilli con carne", "Miguel", "Sushi"],
       correct: ["Chilli con carne", "Miguel"],
     },
+    {
+      text: "What is Açucena's favorite Monster?",
+      options: [
+        "White Monster",
+        "Monster Reserve",
+        "Any Monster Beast",
+        "Mango Loco",
+      ],
+      correct: ["Mango Loco"],
+    },
   ],
   BigBlackMenBootyShaking: [],
 };
@@ -251,6 +261,9 @@ function Results() {
       <Typography variant="h6">Name: {name}</Typography>
       <Typography variant="h6">
         Score: {score} / {quizData.Açucena.length}
+      </Typography>
+      <Typography variant="h6">
+        The code you are looking for is: 1022
       </Typography>
       <Button
         variant="contained"
