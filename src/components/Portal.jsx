@@ -5,6 +5,7 @@ import {
   DialogTitle,
   DialogContent,
   IconButton,
+  Box,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
@@ -14,13 +15,21 @@ export default function PortalComponent() {
 
   return (
     <div className="relative flex flex-col items-center p-4">
-      <Button variant="contained" onClick={() => setIsOpen(true)}>
-        Portal öffnen
-      </Button>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          allignItems: "center",
+        }}
+      >
+        <Button variant="contained" onClick={() => setIsOpen(true)}>
+          Puzzles
+        </Button>
+      </Box>
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <DialogTitle>
-          Portal
+          Puzzles
           <IconButton
             aria-label="close"
             onClick={() => setIsOpen(false)}

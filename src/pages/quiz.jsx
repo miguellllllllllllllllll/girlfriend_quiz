@@ -101,7 +101,7 @@ function Home() {
       >
         Start
       </Button>
-      <Button component={Link} to="/homepage" sx={{ mt: 2 }}>
+      <Button component={Link} to="/homepage" sx={{ mt: 3 }}>
         Back to Homepage
       </Button>
       <Typography variant="h5" sx={{ mt: 4 }}>
@@ -259,6 +259,9 @@ function Results() {
         onClick={() => navigate("/quiz/start")}
       >
         New Quiz
+      </Button>
+      <Button component={Link} to="/homepage" sx={{ mt: 2 }}>
+        Back to Homepage
       </Button>
     </Container>
   );

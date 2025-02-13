@@ -16,7 +16,9 @@ export default function Navbar() {
             alt="Emoji"
           />
         </Typography>
-        <Button color="inherit">About</Button>
+        <Button color="inherit" value="about">
+          About
+        </Button>
         <Button color="inherit">Puzzles</Button>
         <Button color="inherit">Hunt</Button>
       </Toolbar>

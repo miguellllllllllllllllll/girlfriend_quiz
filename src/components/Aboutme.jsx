@@ -21,8 +21,8 @@ function AboutMe() {
             />
 
             {/* Titel */}
-            <Typography variant="h4" color="primary" gutterBottom>
-              Über Mich
+            <Typography variant="h4" color="primary" id="about" gutterBottom>
+              About
             </Typography>
 
             {/* Beschreibung */}
