@@ -8,6 +8,7 @@ import {
   List,
   ListItem,
 } from "@mui/material";
+import avatar from "/src/assets/secondpic.jpg";
 
 export default function AboutMe() {
   return (
@@ -17,7 +18,7 @@ export default function AboutMe() {
           <CardContent>
             {/* Profilbild */}
             <Avatar
-              src="/src/assets/secondpic.jpg"
+              src={avatar}
               alt="Mein Profilbild"
               sx={{ width: 100, height: 100, margin: "0 auto", mb: 2 }}
             />
