@@ -64,7 +64,7 @@ export default function LoveLetter() {
             top: 0,
             width: "100%",
             height: "50%",
-            backgroundColor: "#b71c1c",
+            backgroundColor: "#9F1919",
             borderRadius: "5px 5px 0 0",
             clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)",
             transformOrigin: "top",
