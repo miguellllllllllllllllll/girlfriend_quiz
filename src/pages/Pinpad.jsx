@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Importiere Link für Navigation
 import Input from "../components/Input";
 import Button from "../components/Button";
 import PostIt from "../components/PostIt";
@@ -30,13 +31,6 @@ export default function Pinpad() {
 
   return (
     <>
-      {/* <Banner
-        images={[Logo, icon]} // Multiple images
-        size="100px"
-        fit="contain"
-        color="#f0f0f0"
-        spacing="0px"
-      /> */}
       <Navbar />
       <div className="bg">
         <main>
@@ -70,6 +64,18 @@ export default function Pinpad() {
           </section>
         </main>
         <PostIt text="To get the 4 digit code you have to play the quiz first!!!" />
+
+        {/* Der Button für die /letter Route wird nur angezeigt, wenn der Code richtig eingegeben wurde */}
+        {isUnlocked && (
+          <Link to="/letter">
+            <Button
+              value={"click me"}
+              variant="contained"
+              color="primary"
+              sx={{ marginTop: 2 }}
+            />
+          </Link>
+        )}
       </div>
     </>
   );
