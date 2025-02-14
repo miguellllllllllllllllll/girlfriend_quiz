@@ -6,6 +6,7 @@ import Banner from "../components/Banner";
 import "/src/Pinpad.css";
 import Logo from "/src/assets/tf2title.png";
 import icon from "/src/assets/tf2icon.svg";
+import Navbar from "../components/Navbar";
 
 const PASSCODE = "1022";
 
@@ -29,13 +30,14 @@ export default function Pinpad() {
 
   return (
     <>
-      <Banner
+      {/* <Banner
         images={[Logo, icon]} // Multiple images
         size="100px"
         fit="contain"
         color="#f0f0f0"
         spacing="0px"
-      />
+      /> */}
+      <Navbar />
       <div className="bg">
         <main>
           <section className="numbers">

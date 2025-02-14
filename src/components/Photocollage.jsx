@@ -47,6 +47,7 @@ export default function PhotoCollage() {
   return (
     <>
       <Typography
+        id="Art"
         variant="h4"
         color="primary"
         sx={{

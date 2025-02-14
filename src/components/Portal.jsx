@@ -22,7 +22,11 @@ export default function PortalComponent() {
           allignItems: "center",
         }}
       >
-        <Button variant="contained" onClick={() => setIsOpen(true)}>
+        <Button
+          id="puzzles"
+          variant="contained"
+          onClick={() => setIsOpen(true)}
+        >
           Puzzles
         </Button>
       </Box>
@@ -42,10 +46,20 @@ export default function PortalComponent() {
           <Button
             variant="contained"
             color="primary"
+            sx={{ margin: "2" }}
             component={Link}
             to="/quiz/start"
           >
-            Zum Quiz wechseln
+            Go to Quiz
+          </Button>
+          <Button
+            sx={{ margin: "2" }}
+            variant="contained"
+            color="primary"
+            component={Link}
+            to="/pinpad"
+          >
+            Go to Pinpad
           </Button>
         </DialogContent>
       </Dialog>

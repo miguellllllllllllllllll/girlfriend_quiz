@@ -22,9 +22,8 @@ function Homepage() {
       <ThemeProvider theme={theme}>
         <CssBaseline /> {/* Stellt sicher, dass MUI Styles übernommen werden */}
         <Navbar />
-        <Portal />
         <AboutMe />
-        <QuizApp />
+        <Portal />
         <Photocollage />
       </ThemeProvider>
     </>

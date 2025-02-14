@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, Typography, Paper } from "@mui/material";
 import { motion } from "framer-motion";
-
+import Signature from "/src/assets/signature.svg";
 export default function LoveLetter() {
   const [open, setOpen] = useState(false);
 
@@ -12,7 +12,8 @@ export default function LoveLetter() {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
-        backgroundColor: "#ffebee",
+        background:
+          "linear-gradient(to Bottom,rgb(255, 100, 95),rgb(254, 186, 123))",
         paddingTop: "50px",
       }}
     >
@@ -20,8 +21,8 @@ export default function LoveLetter() {
         sx={{
           mt: "200px",
           position: "relative",
-          width: "400px",
-          height: "300px",
+          width: "700px",
+          height: "400px",
         }}
       >
         {/* Umschlag Unterteil */}
@@ -39,7 +40,21 @@ export default function LoveLetter() {
 
             zIndex: 4,
           }}
-        />
+        >
+          <img
+            src={Signature}
+            alt="Your Image"
+            style={{
+              width: "80%", // Adjust width as needed
+              height: "auto",
+              objectFit: "cover",
+              borderRadius: "10px",
+              marginTop: "320px",
+              marginLeft: "20px",
+              width: "200px",
+            }}
+          />
+        </Box>
 
         {/* Umschlag Deckel */}
         <motion.div
@@ -83,11 +98,15 @@ export default function LoveLetter() {
 
         {/* Love Letter */}
         <motion.div
-          initial={{ y: 120, opacity: 0 }} // Unsichtbar am Anfang
-          animate={{ y: open ? -200 : 120, opacity: open ? 1 : 0 }} // Sichtbar, wenn geöffnet
+          initial={{ y: 20, opacity: 0 }} // Unsichtbar am Anfang
+          animate={{
+            y: open ? -200 : -20,
+            opacity: open ? 1 : 0,
+            zIndex: open ? 3 : 1,
+          }} // Sichtbar, wenn geöffnet$
           transition={{
             type: "spring",
-            stiffness: 100,
+            stiffness: 20,
             opacity: { duration: 0.5 },
           }}
           style={{
@@ -107,7 +126,9 @@ export default function LoveLetter() {
               left: "50%",
               transform: "translate(-50%, -50%)",
               padding: "32px",
-              width: "370px",
+              width: "650px",
+              minHeight: "400px",
+
               textAlign: "center",
               backgroundColor: "#fff",
               borderRadius: "16px",
@@ -118,21 +139,29 @@ export default function LoveLetter() {
               variant="h4"
               sx={{ color: "#d32f2f", fontWeight: "bold" }}
             >
-              My Dearest Love,
+              Para o meu Amorzinho :3
             </Typography>
             <Typography
               variant="body1"
               sx={{ marginTop: "20px", color: "#333", fontSize: "18px" }}
             >
-              From the moment I met you, my world has been filled with warmth
-              and joy. You are the light in my life, and I cherish every second
-              we spend together.
+              Já passou um ano desde que nos namoramos, e eu nunca estive tão
+              Feliz como contigo. Eu amo-te para a lua e de volta. Eu tenho
+              sempre tantas saudades tuas e não consigo esperar até verte outra
+              vez. És a pessoa mais importante da minha vida, e eu não quero
+              viver um dia sem ser o teu marido.
             </Typography>
             <Typography
               variant="body1"
               sx={{ marginTop: "20px", color: "#333", fontSize: "18px" }}
             >
-              With all my love, forever and always.
+              - o teu Miguellito
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{ marginTop: "20px", color: "#333", fontSize: "14px" }}
+            >
+              Mwahhh
             </Typography>
           </Paper>
         </motion.div>
