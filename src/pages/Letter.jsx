@@ -18,6 +18,7 @@ export default function LoveLetter() {
     >
       <Box
         sx={{
+          mt: "200px",
           position: "relative",
           width: "400px",
           height: "300px",
@@ -30,13 +31,13 @@ export default function LoveLetter() {
             width: "100%",
             height: "100%",
             backgroundColor: "#d32f2f",
-            clipPath: "polygon(0% 100%, 100% 100%, 100% 00%, 50% 50%, 0% 0%)",
+            clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 50% 50%, 0% 0%)",
             // 50% 50% = cutout
 
             borderRadius: "5px 5px 10px 10px",
             borderBottom: "10px",
 
-            zIndex: 1,
+            zIndex: 3,
           }}
         />
 
@@ -51,7 +52,9 @@ export default function LoveLetter() {
             width: "100%",
             height: "50%",
             backgroundColor: "#b71c1c",
+
             borderRadius: "5px 5px 0 0",
+
             clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)",
             transformOrigin: "top",
             cursor: "pointer",
