@@ -13,14 +13,14 @@ export default function LoveLetter() {
         alignItems: "center",
         height: "100vh",
         backgroundColor: "#ffebee",
-        paddingTop: "50px", // Brief weiter unten
+        paddingTop: "50px",
       }}
     >
       <Box
         sx={{
           position: "relative",
-          width: "400px", // Größer
-          height: "300px", // Größer
+          width: "400px",
+          height: "300px",
         }}
       >
         {/* Umschlag Unterteil */}
@@ -30,6 +30,9 @@ export default function LoveLetter() {
             width: "100%",
             height: "100%",
             backgroundColor: "#d32f2f",
+            clipPath: "polygon(0% 100%, 100% 100%, 100% 00%, 50% 50%, 0% 0%)",
+            // 50% 50% = cutout
+
             borderRadius: "5px 5px 10px 10px",
             borderBottom: "10px",
 
@@ -76,9 +79,13 @@ export default function LoveLetter() {
 
         {/* Love Letter */}
         <motion.div
-          initial={{ y: 120 }} // Anfangs weiter unten
-          animate={{ y: open ? -200 : 120 }} // Höher schweben, aber nicht aus dem Bildschirm
-          transition={{ type: "spring", stiffness: 100 }}
+          initial={{ y: 120, opacity: 0 }} // Unsichtbar am Anfang
+          animate={{ y: open ? -200 : 120, opacity: open ? 1 : 0 }} // Sichtbar, wenn geöffnet
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            opacity: { duration: 0.5 },
+          }}
           style={{
             position: "absolute",
             borderRadius: "5px",
@@ -86,6 +93,7 @@ export default function LoveLetter() {
             left: "50%",
             transform: "translate(-50%, -50%)",
             zIndex: 2,
+            display: open ? "block" : "none", // Falls gewünscht, kann opacity alleine genutzt werden
           }}
         >
           <Paper
@@ -100,11 +108,11 @@ export default function LoveLetter() {
               textAlign: "center",
               backgroundColor: "#fff",
               borderRadius: "16px",
-              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+              boxShadow: "0 6px 15px rgba(0, 0, 0, 0.3)",
             }}
           >
             <Typography
-              variant="h4" // Größerer Titel
+              variant="h4"
               sx={{ color: "#d32f2f", fontWeight: "bold" }}
             >
               My Dearest Love,
