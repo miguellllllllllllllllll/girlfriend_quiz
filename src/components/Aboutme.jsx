@@ -9,6 +9,7 @@ import {
   ListItem,
 } from "@mui/material";
 import avatar from "/src/assets/secondpic.jpg";
+import secondavatar from "/src/assets/firstpic.jpg";
 
 export default function AboutMe() {
   return (
@@ -47,7 +48,7 @@ export default function AboutMe() {
             {/* Album Cover */}
             <Box
               component="img"
-              src="/src/assets/firstpic.jpg"
+              src={secondavatar}
               alt="Album 1 Cover"
               sx={{ width: 180, height: 260, borderRadius: 2, mr: 3 }}
             />

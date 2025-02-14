@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import { Link } from "react-router-dom";
+import icon from "/src/assets/tiktokemoji.png";
 
 export default function Navbar() {
   return (
@@ -27,7 +28,7 @@ export default function Navbar() {
             Açucena
             <Box
               component="img"
-              src="/src/assets/tiktokemoji.png"
+              src={icon}
               sx={{ height: 30, width: 30, ml: 1 }} // Adjust emoji size
               alt="Emoji"
             />
