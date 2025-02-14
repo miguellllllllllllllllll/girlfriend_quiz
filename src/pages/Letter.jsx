@@ -37,7 +37,7 @@ export default function LoveLetter() {
             borderRadius: "5px 5px 10px 10px",
             borderBottom: "10px",
 
-            zIndex: 3,
+            zIndex: 4,
           }}
         />
 
@@ -58,6 +58,7 @@ export default function LoveLetter() {
             clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)",
             transformOrigin: "top",
             cursor: "pointer",
+            zIndex: -1,
           }}
           onClick={() => setOpen(!open)}
         />
@@ -95,8 +96,7 @@ export default function LoveLetter() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            zIndex: 2,
-            display: open ? "block" : "none", // Falls gewünscht, kann opacity alleine genutzt werden
+            zIndex: 3,
           }}
         >
           <Paper
