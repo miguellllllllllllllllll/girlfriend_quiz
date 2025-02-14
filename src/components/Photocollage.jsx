@@ -17,12 +17,15 @@ export default function PhotoCollage() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    // Alle Bilder aus src/assets/drawings automatisch importieren
     const imageModules = import.meta.glob(
       "/src/assets/drawings/*.{jpg,png,jpeg}"
     );
-    const imagePaths = Object.keys(imageModules);
-    setImages(imagePaths);
+
+    Promise.all(
+      Object.values(imageModules).map((importImage) => importImage())
+    ).then((images) => {
+      setImages(images.map((mod) => mod.default));
+    });
   }, []);
 
   const handleOpen = (index) => {
