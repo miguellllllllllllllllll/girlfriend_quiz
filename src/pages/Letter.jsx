@@ -38,8 +38,8 @@ export default function LoveLetter() {
 
         {/* Envelope Flap */}
         <motion.div
-          initial={{ rotateX: 0 }}
-          animate={{ rotateX: open ? 180 : 0 }}
+          initial={{ rotateX: 0, zIndex: 3 }} // Start: Über dem Brief
+          animate={{ rotateX: open ? 180 : 0, zIndex: open ? 1 : 3 }} // Nach Animation: Hinter den Brief
           transition={{ duration: 0.5 }}
           style={{
             position: "absolute",
@@ -51,10 +51,10 @@ export default function LoveLetter() {
             clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)",
             transformOrigin: "top",
             cursor: "pointer",
-            zIndex: 3,
           }}
           onClick={() => setOpen(!open)}
         />
+
         <motion
           initial={{ rotateX: 0 }}
           animate={{ rotateX: open ? 180 : 0 }}
