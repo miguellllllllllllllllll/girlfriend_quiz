@@ -3,10 +3,7 @@ import { Link } from "react-router-dom"; // Importiere Link für Navigation
 import Input from "../components/Input";
 import Button from "../components/Button";
 import PostIt from "../components/PostIt";
-import Banner from "../components/Banner";
 import "/src/Pinpad.css";
-import Logo from "/src/assets/tf2title.png";
-import icon from "/src/assets/tf2icon.svg";
 import Navbar from "../components/Navbar";
 
 const PASSCODE = "1022";
