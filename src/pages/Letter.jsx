@@ -13,16 +13,17 @@ export default function LoveLetter() {
         alignItems: "center",
         height: "100vh",
         backgroundColor: "#ffebee",
+        paddingTop: "50px", // Brief weiter unten
       }}
     >
       <Box
         sx={{
           position: "relative",
-          width: "350px",
-          height: "250px",
+          width: "400px", // Größer
+          height: "300px", // Größer
         }}
       >
-        {/* Envelope Bottom Part */}
+        {/* Umschlag Unterteil */}
         <Box
           sx={{
             position: "absolute",
@@ -36,10 +37,10 @@ export default function LoveLetter() {
           }}
         />
 
-        {/* Envelope Flap */}
+        {/* Umschlag Deckel */}
         <motion.div
-          initial={{ rotateX: 0, zIndex: 3 }} // Start: Über dem Brief
-          animate={{ rotateX: open ? 180 : 0, zIndex: open ? 1 : 3 }} // Nach Animation: Hinter den Brief
+          initial={{ rotateX: 0, zIndex: 3 }}
+          animate={{ rotateX: open ? 180 : 0, zIndex: open ? 1 : 3 }}
           transition={{ duration: 0.5 }}
           style={{
             position: "absolute",
@@ -75,8 +76,8 @@ export default function LoveLetter() {
 
         {/* Love Letter */}
         <motion.div
-          initial={{ y: 100 }}
-          animate={{ y: open ? -180 : 100 }}
+          initial={{ y: 120 }} // Anfangs weiter unten
+          animate={{ y: open ? -200 : 120 }} // Höher schweben, aber nicht aus dem Bildschirm
           transition={{ type: "spring", stiffness: 100 }}
           style={{
             position: "absolute",
@@ -95,7 +96,7 @@ export default function LoveLetter() {
               left: "50%",
               transform: "translate(-50%, -50%)",
               padding: "32px",
-              width: "300px",
+              width: "370px",
               textAlign: "center",
               backgroundColor: "#fff",
               borderRadius: "16px",
@@ -103,14 +104,14 @@ export default function LoveLetter() {
             }}
           >
             <Typography
-              variant="h5"
+              variant="h4" // Größerer Titel
               sx={{ color: "#d32f2f", fontWeight: "bold" }}
             >
               My Dearest Love,
             </Typography>
             <Typography
               variant="body1"
-              sx={{ marginTop: "16px", color: "#333" }}
+              sx={{ marginTop: "20px", color: "#333", fontSize: "18px" }}
             >
               From the moment I met you, my world has been filled with warmth
               and joy. You are the light in my life, and I cherish every second
@@ -118,7 +119,7 @@ export default function LoveLetter() {
             </Typography>
             <Typography
               variant="body1"
-              sx={{ marginTop: "16px", color: "#333" }}
+              sx={{ marginTop: "20px", color: "#333", fontSize: "18px" }}
             >
               With all my love, forever and always.
             </Typography>
